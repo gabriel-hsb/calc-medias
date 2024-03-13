@@ -15,10 +15,10 @@ form.addEventListener("submit", function (e) {
 function adicionarLinha() {
   const nomeAtividade = document.querySelector("#nome-atividade").value;
   const notaAtividade = document.querySelector("#nota-atividade").value;
-  const aprovado = notaAtividade >= mediaAprovar;
+  const aprovadoAtividade = notaAtividade >= mediaAprovar;
   let statusAtividade = "";
-  if (aprovado) {
-    statusAtividade = "Aprovado!";
+  if (aprovadoAtividade) {
+    statusAtividade = `<td class="aprovado"> Aprovado! </td>`;
   } else {
     statusAtividade = "Reprovado!";
   }
@@ -27,7 +27,7 @@ function adicionarLinha() {
 
   linha += `<td> ${nomeAtividade} </td>`;
   linha += `<td> ${notaAtividade} </td>`;
-  linha += `<td> ${statusAtividade} </td>`;
+  linha += statusAtividade;
 
   linha += "</tr>";
 }
