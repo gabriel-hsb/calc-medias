@@ -1,5 +1,11 @@
 td.aprovado {
-  background-color: #a7c957;
+  color: #9dc344;
+  font-weight: 600;
+}
+
+td.reprovado {
+  color: #af2d28;
+  font-weight: 600;
 }
 
 * {
@@ -20,12 +26,28 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 400;
-  background-color: rgba(254, 250, 224, 0.7725490196);
+  background-image: url(../img/stacked-waves-haikei.svg);
+  background-repeat: no-repeat;
+  background-size: 500vh;
+  overflow-y: hidden;
 }
 
 .container {
+  overflow-y: auto;
   max-width: 800px;
-  margin: 0 auto;
+  max-height: 85vh;
+  margin: 5rem auto;
+  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.19);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.container header {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
 }
 .container header h1 {
   font-weight: 800;
@@ -33,6 +55,12 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+.container form {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 2rem;
 }
 .container form input,
 .container form button {
@@ -52,10 +80,14 @@ body {
   filter: brightness(85%);
 }
 .container table {
-  margin-top: 2rem;
   width: 80%;
   text-align: center;
-  gap: 2 0px;
+  margin: 0 auto;
+}
+.container table thead {
+  position: sticky;
+  top: 1px;
+  background-color: #585b64;
 }
 .container table th {
   padding: 10px 20px;
@@ -66,6 +98,7 @@ body {
 }
 .container table tfoot {
   font-weight: 800;
+  background-color: #585b64;
 }
 
 /*# sourceMappingURL=main.css.map */
