@@ -25,6 +25,7 @@ function adicionarLinha() {
   if (atividadesArray.includes(nomeAtividade)) {
     window.alert(`A atividade ${nomeAtividade} já foi inserida!`);
     document.querySelector("#nome-atividade").value = "";
+    document.querySelector("#nota-atividade").value = "";
   } else {
     atividadesArray.push(nomeAtividade);
     const aprovadoAtividade = notaAtividade >= mediaAprovar;
@@ -73,8 +74,8 @@ function calcMediaFinal(array) {
   const aprovadoMediaFinal = valores >= mediaAprovar;
 
   aprovadoMediaFinal
-    ? (resultadoEmoji.innerHTML = "😃")
-    : (resultadoEmoji.innerHTML = "😞");
+    ? (resultadoEmoji.innerHTML = "😃", document.body.style.backgroundImage = "url(../img/aprovado.svg)" )
+    : (resultadoEmoji.innerHTML = "😞", document.body.style.backgroundImage = "url(../img/reprovado.svg)" );
 
   return aprovadoMediaFinal;
 }
