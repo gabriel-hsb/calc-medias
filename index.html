@@ -20,12 +20,19 @@
           <ion-icon name="calculator-outline"></ion-icon> Calculadora de Médias
         </h1>
       </header>
+      <div class="container-reset">
+        <p id="media-user"></p>
+        <button id="button-reset" type="reset">
+          Resetar <ion-icon name="refresh-outline"></ion-icon>
+        </button>
+      </div>
       <form>
         <input
           type="text"
           id="nome-atividade"
           placeholder="Nome da atividade"
           required
+          autofocus="autofocus"
         />
         <input
           type="number"
@@ -33,10 +40,11 @@
           placeholder="Nota da atividade"
           inputmode="numeric"
           required
+          autofocus="autofocus"
           min="0"
           max="10"
         />
-        <button type="submit">Adicionar +</button>
+        <button type="submit" id="button-submit">Adicionar +</button>
       </form>
       <table cellspacing="0">
         <thead>

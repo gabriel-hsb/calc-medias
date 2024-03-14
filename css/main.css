@@ -37,14 +37,24 @@ body {
 .container {
   overflow-y: auto;
   max-width: 800px;
-  max-height: 95dvh;
-  margin: 40px auto 0 auto;
+  max-height: 92dvh;
+  margin: 36px auto 18px auto;
   padding: 20px 40px;
   background: rgba(255, 255, 255, 0.328);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(8px);
+}
+.container::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+}
+.container::-webkit-scrollbar-thumb {
+  background: #374a53;
+}
+.container::-webkit-scrollbar-track {
+  background: transparent;
 }
 .container header {
   display: flex;
@@ -59,30 +69,57 @@ body {
   gap: 20px;
   margin: 0;
 }
-.container form {
+.container .container-reset {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 1em;
-  margin-bottom: 2rem;
+  gap: 50px;
+  margin: 0 auto 18px 0;
 }
-.container form input,
-.container form button {
+.container .container-reset p {
+  font-size: 1rem;
+  margin: 0;
+  background-color: #fff;
   border-radius: 5px;
   padding: 0.5rem 0.75rem;
   border: 1px solid rgba(0, 0, 0, 0.5);
   font-family: inherit;
 }
+.container .container-reset p span {
+  font-weight: 600;
+}
+.container form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-bottom: 36px;
+}
 .container form input {
   width: 200px;
 }
-.container form button {
+.container form [type=submit] {
   background-color: #009473;
   color: #fff;
+}
+.container input,
+.container button {
+  border-radius: 5px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(55, 74, 83, 0.5);
+  font-family: inherit;
+  transition: 0.25s;
+}
+.container button {
   font-weight: bold;
 }
-.container form button:hover, .container form button:focus {
+.container button:hover, .container button:focus {
   cursor: pointer;
   filter: brightness(85%);
+}
+.container #button-reset {
+  background-color: #ff5858;
+  color: #000;
 }
 .container table {
   width: 80%;
@@ -91,7 +128,7 @@ body {
 }
 .container table thead {
   position: sticky;
-  top: 1px;
+  top: -20px;
   background-color: #fff;
 }
 .container table th {

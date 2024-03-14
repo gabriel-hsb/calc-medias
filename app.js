@@ -1,12 +1,25 @@
-const mediaAprovar = parseFloat(window.prompt("Média mínima para aprovação"));
+const mediaAprovar = parseFloat(
+  window.prompt("Média mínima para aprovação, entre 1 e 10")
+);
 const form = document.querySelector("form");
-const submit = document.querySelector("form button");
+const buttonSubmit = document.querySelector("#button-submit");
+const buttonReset = document.querySelector("#button-reset");
 const table = document.querySelector("table");
+const mediaUser = document.querySelector("#media-user");
 let linha = "";
-
 let notasArray = [];
 let atividadesArray = [];
 
+mediaUser.innerHTML = `Média mínima para aprovação: <span>${mediaAprovar}</span>`;
+
+const preloadImages = (srcs) => {
+  srcs.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+};
+
+preloadImages(["../img/aprovado.svg", "../img/reprovado.svg"]);
 // quando clicar em submit, chama todas as funções criadas
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -20,7 +33,7 @@ function adicionarLinha() {
   const notaAtividade = parseFloat(
     document.querySelector("#nota-atividade").value
   );
-  
+
   if (atividadesArray.includes(nomeAtividade)) {
     window.alert(`A atividade ${nomeAtividade} já foi inserida!`);
     document.querySelector("#nome-atividade").value = "";
@@ -46,6 +59,10 @@ function adicionarLinha() {
   document.querySelector("#nome-atividade").value = "";
   document.querySelector("#nota-atividade").value = "";
 }
+
+buttonReset.addEventListener("click", () => {
+  location.reload();
+});
 
 function atualizarTabela() {
   const corpoTabela = document.querySelector("tbody");
@@ -74,8 +91,10 @@ function calcMediaFinal(array) {
   const aprovadoMediaFinal = valores >= mediaAprovar;
 
   aprovadoMediaFinal
-    ? (resultadoEmoji.innerHTML = "😃", document.body.style.backgroundImage = "url(../img/aprovado.svg)" )
-    : (resultadoEmoji.innerHTML = "😞", document.body.style.backgroundImage = "url(../img/reprovado.svg)" );
+    ? ((resultadoEmoji.innerHTML = "😃"),
+      (document.body.style.backgroundImage = "url(../img/aprovado.svg)"))
+    : ((resultadoEmoji.innerHTML = "😞"),
+      (document.body.style.backgroundImage = "url(../img/reprovado.svg)"));
 
   return aprovadoMediaFinal;
 }
