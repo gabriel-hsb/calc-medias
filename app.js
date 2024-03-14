@@ -20,14 +20,14 @@ function adicionarLinha() {
   const notaAtividade = parseFloat(
     document.querySelector("#nota-atividade").value
   );
-  notasArray.push(notaAtividade);
-
+  
   if (atividadesArray.includes(nomeAtividade)) {
     window.alert(`A atividade ${nomeAtividade} já foi inserida!`);
     document.querySelector("#nome-atividade").value = "";
     document.querySelector("#nota-atividade").value = "";
   } else {
     atividadesArray.push(nomeAtividade);
+    notasArray.push(notaAtividade);
     const aprovadoAtividade = notaAtividade >= mediaAprovar;
     let statusAtividade = "";
     if (aprovadoAtividade) {
