@@ -1,12 +1,4 @@
-
-
-<p align="left">  
-<img src="[https://github.com/gabriel-hsb/calc-medias/assets/110293122/53756c63-18c9-4dea-8865-e9b465ff9205](https://github.com/gabriel-hsb/calc-medias/assets/110293122/53756c63-18c9-4dea-8865-e9b465ff9205 "https://github.com/gabriel-hsb/calc-medias/assets/110293122/53756c63-18c9-4dea-8865-e9b465ff9205")"  
-width=20px;/>  
-<h1 display="inline-block">Calculadora de médias</h1>  
-</p>  
-  
-  
+![image](https://github.com/gabriel-hsb/calc-medias/assets/110293122/81dae984-cb88-46fb-b922-578697fecab1)  
 #### Uma calculadora de médias. Simples e eficaz.  
 #### Visite-a no Vercel: [ghsb-js-calc-media.vercel.app](https://ghsb-js-calc-media.vercel.app/ "https://ghsb-js-calc-media.vercel.app")
   
