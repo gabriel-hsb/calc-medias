@@ -1,5 +1,5 @@
 ![image](https://github.com/gabriel-hsb/calc-medias/assets/110293122/81dae984-cb88-46fb-b922-578697fecab1)  
-#### Uma calculadora de médias. Simples e eficaz.  
+#### Uma calculadora de médias feita em JavaScript. Simples e eficaz.
 #### Visite-a no Vercel: [ghsb-js-calc-media.vercel.app](https://ghsb-js-calc-media.vercel.app/ "https://ghsb-js-calc-media.vercel.app")
   
 |Desktop | Mobile |  
