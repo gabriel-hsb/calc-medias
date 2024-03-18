@@ -70,7 +70,7 @@ function atualizarTabela() {
 }
 
 function calcMediaFinal(array) {
-  let valores = 0; // Declarando valores dentro da função para evitar problemas de escopo global
+  // let valores = 0; // Declarando valores dentro da função para evitar problemas de escopo global
   let notasArray = []; // Declarando e inicializando o array de notas
   const resultadovalor = document.querySelector("#resultado-valor");
   const resultadoEmoji = document.querySelector("#resultado-emoji");
@@ -80,15 +80,19 @@ function calcMediaFinal(array) {
   );
   notasArray.push(notaAtividade);
 
-  for (let i = 0; i < array.length; i++) {
-    valores += parseFloat(array[i]);
-  }
+  // for (let i = 0; i < array.length; i++) {
+  //   valores += parseFloat(array[i]);
+  // }5
 
-  valores /= array.length; // Calculando a média das notas
+  let somaDasNotas = notasArray.reduce((totalAtual, nota) => {
+    return nota.notaAtividade + totalAtual;
+  }, 0);
 
-  resultadovalor.innerHTML = valores.toFixed(2);
+  somaDasNotas.toFixed(2) /= array.length; // Calculando a média das notas
 
-  const aprovadoMediaFinal = valores >= mediaAprovar;
+  resultadovalor.innerHTML = somaDasNotas.toFixed(2);
+
+  const aprovadoMediaFinal = somaDasNotas >= mediaAprovar;
 
   aprovadoMediaFinal
     ? ((resultadoEmoji.innerHTML = "😃"),
