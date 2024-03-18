@@ -12,6 +12,10 @@ let atividadesArray = [];
 
 mediaUser.innerHTML = `Média mínima para aprovação: <span>${mediaAprovar}</span>`;
 
+if (isNaN(mediaAprovar) || mediaAprovar >= 10) {
+  location.reload();
+}
+
 const preloadImages = (srcs) => {
   srcs.forEach((src) => {
     const img = new Image();
@@ -20,16 +24,18 @@ const preloadImages = (srcs) => {
 };
 
 preloadImages(["../img/aprovado.svg", "../img/reprovado.svg"]);
+
 // quando clicar em submit, chama todas as funções criadas
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   adicionarLinha();
   atualizarTabela();
-  calcMediaFinal(notasArray);
+  mediaFinal(notasArray);
 });
 
 function adicionarLinha() {
   const nomeAtividade = document.querySelector("#nome-atividade").value;
+
   const notaAtividade = parseFloat(
     document.querySelector("#nota-atividade").value
   );
@@ -41,6 +47,7 @@ function adicionarLinha() {
   } else {
     atividadesArray.push(nomeAtividade);
     notasArray.push(notaAtividade);
+
     const aprovadoAtividade = notaAtividade >= mediaAprovar;
     let statusAtividade = "";
     if (aprovadoAtividade) {
@@ -50,7 +57,6 @@ function adicionarLinha() {
     }
 
     linha += "<tr>";
-
     linha += `<td> ${nomeAtividade} </td>`;
     linha += `<td> ${notaAtividade} </td>`;
     linha += statusAtividade;
@@ -69,36 +75,24 @@ function atualizarTabela() {
   corpoTabela.innerHTML = linha;
 }
 
-function calcMediaFinal(array) {
-  // let valores = 0; // Declarando valores dentro da função para evitar problemas de escopo global
-  let notasArray = []; // Declarando e inicializando o array de notas
+function mediaFinal(array) {
   const resultadovalor = document.querySelector("#resultado-valor");
   const resultadoEmoji = document.querySelector("#resultado-emoji");
 
-  const notaAtividade = parseFloat(
-    document.querySelector("#nota-atividade").value
-  );
-  notasArray.push(notaAtividade);
+  let mediaDasNotas =
+    array.reduce((totalAtual, nota) => {
+      return nota + totalAtual;
+    }, 0) / array.length;
 
-  // for (let i = 0; i < array.length; i++) {
-  //   valores += parseFloat(array[i]);
-  // }5
-
-  let somaDasNotas = notasArray.reduce((totalAtual, nota) => {
-    return nota.notaAtividade + totalAtual;
-  }, 0);
-
-  somaDasNotas.toFixed(2) /= array.length; // Calculando a média das notas
-
-  resultadovalor.innerHTML = somaDasNotas.toFixed(2);
-
-  const aprovadoMediaFinal = somaDasNotas >= mediaAprovar;
+  const aprovadoMediaFinal = mediaDasNotas >= mediaAprovar;
 
   aprovadoMediaFinal
     ? ((resultadoEmoji.innerHTML = "😃"),
       (document.body.style.backgroundImage = "url(../img/aprovado.svg)"))
     : ((resultadoEmoji.innerHTML = "😞"),
       (document.body.style.backgroundImage = "url(../img/reprovado.svg)"));
+
+  resultadovalor.innerHTML = mediaDasNotas.toFixed(2); // atualiza a tabela com resultado média
 
   return aprovadoMediaFinal;
 }
